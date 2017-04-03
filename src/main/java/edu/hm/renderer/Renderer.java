@@ -1,16 +1,26 @@
 package edu.hm.renderer;
 
-import edu.hm.SomeClass;
+import java.lang.reflect.Field;
 
 public class Renderer {
 
-	public Renderer(Object toRender) {
-		// TODO Auto-generated constructor stub
-	}
+    private Object toRender;
 
-	public String render() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public Renderer(Object toRender) {
+        this.toRender = toRender;
+    }
+
+    public String render() {
+        String result = "";
+        Class<?> cls = toRender.getClass();
+        result += "Instance of: " + cls.getName() + "\n";
+        Field[] flds = cls.getDeclaredFields();
+        for (Field fld: flds) {
+            if (fld.getAnnotationsByType(edu.hm.renderer.RenderMe.class) != null) {
+                result += fld.getName() + "\n";
+            }
+        }
+        return result;
+    }
 
 }
