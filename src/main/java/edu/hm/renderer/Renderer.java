@@ -14,7 +14,7 @@ public class Renderer {
     public String render() {
         String result = "";
         Class<?> cls = toRender.getClass();
-        result += "Instance of: " + cls.getName() + "\n";
+        result += "Instance of " + cls.getName() + ":\n";
         Field[] flds = cls.getDeclaredFields();
         for (Field fld : flds) {
             RenderMe annot = fld.getAnnotation(edu.hm.renderer.RenderMe.class);
