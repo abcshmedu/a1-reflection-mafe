@@ -2,6 +2,7 @@ package edu.hm;
 
 import org.junit.*;
 import static org.junit.Assert.*;
+import edu.hm.renderer.*;
 
 public class RendererTest {
 

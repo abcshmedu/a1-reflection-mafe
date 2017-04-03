@@ -2,6 +2,8 @@ package edu.hm;
 
 import java.util.*;
 
+import edu.hm.renderer.RenderMe;
+
 public class SomeClass {
 
     @RenderMe
