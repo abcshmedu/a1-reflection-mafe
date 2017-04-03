@@ -9,6 +9,6 @@ import java.lang.annotation.Target;
 @Target({ElementType.FIELD, ElementType.METHOD})
 public @interface RenderMe {
 
-	String with() default "edu.hm.renderer.Renderer";
+	String with() default "";
 
 }

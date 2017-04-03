@@ -17,7 +17,14 @@ public class Renderer {
         Field[] flds = cls.getDeclaredFields();
         for (Field fld: flds) {
             if (fld.getAnnotationsByType(edu.hm.renderer.RenderMe.class) != null) {
-                result += fld.getName() + "\n";
+                try {
+                	fld.setAccessible(true);
+					result += fld.getName()
+							+ " (Type " + fld.getType() + "): "
+							+ fld.get(toRender) + "\n";
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
             }
         }
         return result;
