@@ -20,11 +20,10 @@ public class Renderer {
             RenderMe annot = fld.getAnnotation(edu.hm.renderer.RenderMe.class);
             if (annot != null) {
                 fld.setAccessible(true);
-                result += fld.getName() + " ";
+                result += fld.getName() + " (Type ";
                 if (annot.with().equals("")) {
                     try {
-                        result += "(Type " + fld.getType().getName() + "): "
-                                + fld.get(toRender) + "\n";
+                        result += fld.getType().getName() + "): " + fld.get(toRender) + "\n";
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -38,6 +37,31 @@ public class Renderer {
                     }
 
                 }
+            }
+        }
+        Method[] mtds = cls.getMethods();
+        for (Method mtd : mtds) {
+            RenderMe annot = mtd.getAnnotation(edu.hm.renderer.RenderMe.class);
+            if (annot != null) {
+                mtd.setAccessible(true);
+                result += mtd.getName() + "() (ReturnType ";
+                if (annot.with().equals("")) {
+                    try {
+                        result += mtd.getReturnType().getName() + "): " + mtd.invoke(toRender) + "\n";
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    
+                    try {
+                        Class<?> renderer = Class.forName(annot.with());
+                        Method render = renderer.getMethod("render", mtd.getReturnType());
+                        result += render.invoke(renderer.newInstance(), mtd.invoke(toRender));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
             }
         }
         return result;

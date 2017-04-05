@@ -15,4 +15,14 @@ public class SomeClass {
     public SomeClass(int foo) {
         this.foo = foo;
     }
+    
+    @RenderMe
+    public int getFoo() {
+        return foo;
+    }
+    
+    @RenderMe(with = "edu.hm.renderer.ArrayRenderer")
+    public int[] getArray (){
+        return array;
+    }
 }
