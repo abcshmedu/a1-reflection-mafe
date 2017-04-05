@@ -11,7 +11,7 @@ public class ArrayRenderer {
      * @return string representation of the array
      */
     public String render(int[] arr) {
-        String result = "(Type int[]): [";
+        String result = "int[]): [";
         for (int elem: arr) {
             result += elem + ", ";
         }

@@ -20,7 +20,9 @@ public class RendererTest {
         assertEquals("Instance of edu.hm.SomeClass:\n"
                 + "foo (Type int): 5\n"
                 + "array (Type int[]): [1, 2, 3, ]\n"
-                + "date (Type java.util.Date): Fri Jan 02 11:17:36 CET 1970\n",
+                + "date (Type java.util.Date): Fri Jan 02 11:17:36 CET 1970\n"
+                + "getArray() (ReturnType int[]): [1, 2, 3, ]\n"
+                + "getFoo() (ReturnType int): 5\n",
                 renderer.render());
     }
 }
