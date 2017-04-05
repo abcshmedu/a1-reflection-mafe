@@ -22,7 +22,7 @@ public class SomeClass {
     }
     
     @RenderMe(with = "edu.hm.renderer.ArrayRenderer")
-    public int[] getArray (){
+    public int[] getArray() {
         return array;
     }
 }

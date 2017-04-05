@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
 public @interface RenderMe {
 
     /**
-     * The class to render with. This is mainly useful fon non-primitive data types.
+     * The class to render with. This is mainly useful for non-primitive data types.
      * @return the class to render with or empty string to use default
      */
     String with() default "";

@@ -3,17 +3,28 @@ package edu.hm.renderer;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
+/**
+ * Class for rendering objects.
+ */
 public class Renderer {
 
     private Object toRender;
 
+    /**
+     * Creates a Renderer.
+     * @param toRender the object to render
+     */
     public Renderer(Object toRender) {
         this.toRender = toRender;
     }
 
+    /**
+     * Method to render objects.
+     * @return string representation of the object
+     */
     public String render() {
         String result = "";
-        Class<?> cls = toRender.getClass();
+        Class< ? > cls = toRender.getClass();
         result += "Instance of " + cls.getName() + ":\n";
         Field[] flds = cls.getDeclaredFields();
         for (Field fld : flds) {
@@ -29,7 +40,7 @@ public class Renderer {
                     }
                 } else {
                     try {
-                        Class<?> renderer = Class.forName(annot.with());
+                        Class< ? > renderer = Class.forName(annot.with());
                         Method render = renderer.getMethod("render", fld.getType());
                         result += render.invoke(renderer.newInstance(), fld.get(toRender));
                     } catch (Exception e) {
@@ -54,7 +65,7 @@ public class Renderer {
                 } else {
                     
                     try {
-                        Class<?> renderer = Class.forName(annot.with());
+                        Class< ? > renderer = Class.forName(annot.with());
                         Method render = renderer.getMethod("render", mtd.getReturnType());
                         result += render.invoke(renderer.newInstance(), mtd.invoke(toRender));
                     } catch (Exception e) {
