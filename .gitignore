@@ -2,3 +2,5 @@
 .project
 .checkstyle
 /target/
+/.idea/
+a1-reflection-mafe.iml
