@@ -4,6 +4,8 @@ import edu.hm.renderer.RenderMe;
 import java.util.*;
 
 public class SomeClass {
+    
+    private String s = "Hallo";
 
     @RenderMe
     private int foo;
@@ -24,5 +26,9 @@ public class SomeClass {
     @RenderMe(with = "edu.hm.renderer.ArrayRenderer")
     public int[] getArray() {
         return array;
+    }
+    
+    public Date getDate() {
+        return date;
     }
 }
