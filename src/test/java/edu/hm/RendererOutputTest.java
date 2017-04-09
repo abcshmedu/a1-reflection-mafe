@@ -41,7 +41,7 @@ public class RendererOutputTest {
     public boolean shouldContain;
 
     @Test
-    public void test() {
+    public void test() throws ClassNotFoundException, NoSuchMethodException {
         if (shouldContain) {
             assertThat(new Renderer(obj).render(), containsString(string));
         } else {
